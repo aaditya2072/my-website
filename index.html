@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aaditya Yadav</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --accent: #d4a853;
+      --dark:   #1a1a2e;
+      --mid:    #16213e;
+      --light:  #f8f5f0;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar { background-color: var(--dark) !important; }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--accent) !important;
+    }
+    .nav-link { color: rgba(255,255,255,.8) !important; transition: color .2s; }
+    .nav-link:hover { color: var(--accent) !important; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 100%);
+      color: white;
+      padding: 100px 0 80px;
+      clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.15;
+    }
+    .hero .accent { color: var(--accent); }
+    .hero p.lead { opacity: .85; font-size: 1.15rem; }
+
+    /* Avatar */
+    .avatar-circle {
+      width: 210px; height: 210px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0f3460, var(--accent));
+      border: 5px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 0 0 12px rgba(212,168,83,.15);
+    }
+    .avatar-circle span {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem; color: white; font-weight: 700;
+    }
+
+    /* Section titles */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; color: var(--dark);
+      display: inline-block; margin-bottom: 1.5rem;
+    }
+    .section-title::after {
+      content: ''; display: block; height: 3px; width: 55%;
+      background: var(--accent); margin-top: 6px; border-radius: 2px;
+    }
+
+    /* About */
+    .about-section { padding: 80px 0; }
+    .info-box {
+      background: white; border-radius: 12px;
+      padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.07);
+    }
+    .info-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid #f0ebe3;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row i { color: var(--accent); font-size: 1.1rem; width: 22px; }
+
+    /* Skills */
+    .skills-section { background-color: var(--dark); color: white; padding: 80px 0; }
+    .skills-section .section-title { color: white; }
+    .skill-pill {
+      display: inline-block;
+      background: rgba(212,168,83,.12); border: 1px solid var(--accent);
+      color: var(--accent); border-radius: 50px; padding: 6px 18px;
+      font-size: .88rem; margin: 4px;
+    }
+    .progress { background: rgba(255,255,255,.1); height: 8px; border-radius: 4px; }
+    .progress-bar { background: var(--accent); border-radius: 4px; }
+
+    /* Interests */
+    .interests-section { padding: 80px 0; }
+    .interest-card {
+      background: white; border-radius: 14px; padding: 30px 20px;
+      text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,.07);
+      transition: transform .25s, box-shadow .25s; height: 100%;
+    }
+    .interest-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+    .interest-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--dark), #0f3460);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .interest-icon i { color: var(--accent); font-size: 1.6rem; }
+
+    /* Contact */
+    .contact-section {
+      background: linear-gradient(135deg, var(--mid) 0%, var(--dark) 100%);
+      color: white; padding: 80px 0;
+    }
+    .contact-section .section-title { color: white; }
+    .contact-box {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(212,168,83,.25);
+      border-radius: 14px; padding: 24px 28px;
+      display: flex; align-items: center; gap: 18px;
+    }
+    .contact-box i { color: var(--accent); font-size: 1.6rem; }
+    .contact-box a { color: var(--accent); text-decoration: none; }
+    .contact-box a:hover { text-decoration: underline; }
+
+    /* Buttons */
+    .btn-accent {
+      background: var(--accent); color: var(--dark); border: none;
+      font-weight: 600; border-radius: 50px; padding: 10px 26px; transition: opacity .2s;
+    }
+    .btn-accent:hover { opacity: .85; color: var(--dark); }
+
+    /* Footer */
+    footer {
+      background: #111; color: rgba(255,255,255,.4);
+      font-size: .85rem; padding: 20px 0; text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Aaditya Yadav</a>
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-2">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#interests">Interests</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-7">
+          <p class="text-uppercase fw-bold mb-2" style="color:var(--accent);letter-spacing:.12em;">Computer Science Student · UNT</p>
+          <h1>Hi, I'm <span class="accent">Aaditya<br/>Yadav.</span></h1>
+          <p class="lead mt-3 mb-4">
+            A Computer Science student at the University of North Texas,
+            passionate about technology, software development, and learning
+            how systems work behind the scenes.
+          </p>
+          <a href="#about" class="btn btn-accent me-2">About Me</a>
+          <a href="#contact" class="btn btn-outline-light rounded-pill px-4">Contact</a>
+        </div>
+        <div class="col-lg-5 text-center">
+          <div class="avatar-circle">
+            <span>AY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="row gy-5 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title">About Me</h2>
+          <p class="mb-3">
+            Hi! I'm <strong>Aaditya Yadav</strong>, a Computer Science student at the
+            <strong>University of North Texas</strong>. I'm passionate about technology,
+            software development, and learning how systems work behind the scenes.
+          </p>
+          <p class="mb-4">
+            In my free time, I enjoy exploring new tools, working on projects, and
+            staying active. I'm always looking for opportunities to grow as a developer
+            and apply what I learn in real-world scenarios.
+          </p>
+          <a href="#contact" class="btn btn-accent">Get In Touch</a>
+        </div>
+        <div class="col-lg-6">
+          <div class="info-box">
+            <div class="info-row">
+              <i class="bi bi-person-fill"></i>
+              <div><small class="text-muted">Full Name</small><br/><strong>Aaditya Yadav</strong></div>
+            </div>
+            <div class="info-row">
+              <i class="bi bi-mortarboard-fill"></i>
+              <div><small class="text-muted">University</small><br/><strong>University of North Texas</strong></div>
+            </div>
+            <div class="info-row">
+              <i class="bi bi-book-fill"></i>
+              <div><small class="text-muted">Major</small><br/><strong>Computer Science</strong></div>
+            </div>
+            <div class="info-row">
+              <i class="bi bi-geo-alt-fill"></i>
+              <div><small class="text-muted">Location</small><br/><strong>Little Elm, Texas</strong></div>
+            </div>
+            <div class="info-row">
+              <i class="bi bi-envelope-fill"></i>
+              <div><small class="text-muted">Email</small><br/><strong>adityadav2072@gmail.com</strong></div>
+            </div>
+            <div class="info-row">
+              <i class="bi bi-circle-fill" style="color:#28a745;font-size:.55rem;"></i>
+              <div><small class="text-muted">Status</small><br/><strong>Open to Opportunities</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section" id="skills">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title mx-auto" style="display:block;">Skills &amp; Technologies</h2>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-6">
+          <h5 class="mb-4 fw-semibold">Proficiency</h5>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1"><span>HTML / CSS</span><span>85%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1"><span>Python</span><span>80%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1"><span>Bootstrap</span><span>78%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:78%"></div></div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1"><span>JavaScript</span><span>75%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:75%"></div></div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1"><span>Git / GitHub</span><span>72%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:72%"></div></div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1"><span>AWS / Cloud</span><span>60%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:60%"></div></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="mb-4 fw-semibold">Tools &amp; Platforms</h5>
+          <div>
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">HTML5</span>
+            <span class="skill-pill">CSS3</span>
+            <span class="skill-pill">Bootstrap 5</span>
+            <span class="skill-pill">Git</span>
+            <span class="skill-pill">GitHub</span>
+            <span class="skill-pill">AWS Amplify</span>
+            <span class="skill-pill">VS Code</span>
+            <span class="skill-pill">Command Line</span>
+            <span class="skill-pill">REST APIs</span>
+            <span class="skill-pill">SQL</span>
+          </div>
+          <div class="mt-4 p-4 rounded-3" style="background:rgba(255,255,255,.05);border:1px solid rgba(212,168,83,.2);">
+            <p class="mb-1" style="color:var(--accent);font-weight:600;">Currently Learning</p>
+            <p class="mb-0 text-white-50 small">
+              Diving deeper into cloud architecture with AWS, web development frameworks,
+              and software engineering best practices at UNT.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section class="interests-section" id="interests">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title mx-auto" style="display:block;">Interests</h2>
+        <p class="text-muted">Things I enjoy and care about outside the classroom.</p>
+      </div>
+      <div class="row gy-4 justify-content-center">
+        <div class="col-sm-6 col-md-3">
+          <div class="interest-card">
+            <div class="interest-icon"><i class="bi bi-code-slash"></i></div>
+            <h6 class="fw-bold mb-2">Software Development</h6>
+            <p class="text-muted small mb-0">Building apps and learning how systems work from the ground up.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="interest-card">
+            <div class="interest-icon"><i class="bi bi-cloud-fill"></i></div>
+            <h6 class="fw-bold mb-2">Cloud &amp; AWS</h6>
+            <p class="text-muted small mb-0">Exploring cloud infrastructure, hosting, and deployment pipelines.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="interest-card">
+            <div class="interest-icon"><i class="bi bi-tools"></i></div>
+            <h6 class="fw-bold mb-2">Exploring New Tools</h6>
+            <p class="text-muted small mb-0">Always excited to discover new frameworks and developer tools.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="interest-card">
+            <div class="interest-icon"><i class="bi bi-activity"></i></div>
+            <h6 class="fw-bold mb-2">Staying Active</h6>
+            <p class="text-muted small mb-0">Balancing screen time with physical activity to stay sharp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title mx-auto" style="display:block;">Get In Touch</h2>
+        <p style="opacity:.75;max-width:480px;margin:0 auto;">
+          I'm always open to connecting with developers, classmates, or anyone
+          interested in technology. Feel free to reach out!
+        </p>
+      </div>
+      <div class="row justify-content-center gy-4">
+        <div class="col-md-5">
+          <div class="contact-box">
+            <i class="bi bi-envelope-fill"></i>
+            <div>
+              <p class="mb-0 small" style="opacity:.55;">Email</p>
+              <a href="mailto:adityadav2072@gmail.com">adityadav2072@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="contact-box">
+            <i class="bi bi-geo-alt-fill"></i>
+            <div>
+              <p class="mb-0 small" style="opacity:.55;">Location</p>
+              <span style="color:white;">Little Elm, Texas</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="contact-box">
+            <i class="bi bi-mortarboard-fill"></i>
+            <div>
+              <p class="mb-0 small" style="opacity:.55;">University</p>
+              <span style="color:white;">University of North Texas</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="contact-box">
+            <i class="bi bi-github"></i>
+            <div>
+              <p class="mb-0 small" style="opacity:.55;">GitHub</p>
+              <a href="https://github.com/" target="_blank">github.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p class="mb-0">&copy; 2026 Aaditya Yadav &mdash; University of North Texas &mdash; Built with Bootstrap 5 &amp; hosted on AWS Amplify</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
